@@ -1,5 +1,7 @@
 #include "ArrayBag.h"
 #include <iostream>
+#include <algorithm>
+#include <vector>
 #include <cstddef>
 
 // *** Add new method code to the ADT implementation file
@@ -11,6 +13,63 @@ void ArrayBag<ItemType>::doSomething()
 	std::cout << "This is the demo - code to come to follow lab instructions. Leave this for demo purposes - remove before submission\n";
    std::cout << "doing something again here\n";
 }  // end doSomething
+
+// Model method to base other lab implementations
+template<class ItemType>
+void ArrayBag<ItemType>::bubbleSort()
+{
+	std::cout << "Bubble Sort\n";
+   bool swapped = true;
+        while (swapped) {
+            swapped = false;
+            for (int i = 0; i < itemCount - 1; i++) {
+                if (items[i] > items[i + 1]) {
+                    std::swap(items[i], items[i + 1]);
+                    swapped = true;
+                }
+            }
+        }
+   
+   
+}  // end doSomething
+template<class ItemType>
+bool ArrayBag<ItemType>::binarySearchIterative(const ItemType& target)
+{
+   std::cout << "Binary Search Iterative " << target << "\n";
+   int low = 0;
+        int high = itemCount - 1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (items[mid] == target) {
+               std::cout << "Found it!!! \n";
+                return true;
+            } else if (items[mid] < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return false;
+}
+template<class ItemType>
+bool ArrayBag<ItemType>::binarySearchRecursive(const ItemType& target) 
+{
+   return binarySearchRecursiveHelper(target, 0, itemCount - 1);
+}
+
+template<class ItemType>
+bool ArrayBag<ItemType>::binarySearchRecursiveHelper(const ItemType& target, int low, int high) {
+        if (low > high) return false; // Base case
+
+        int mid = low + (high - low) / 2;
+        if (items[mid] == target) {
+            return true;
+        } else if (items[mid] < target) {
+            return binarySearchRecursiveHelper(target, mid + 1, high);
+        } else {
+            return binarySearchRecursiveHelper(target, low, mid - 1);
+        }
+    }
 
 template<class ItemType>
 ArrayBag<ItemType>::ArrayBag(): itemCount(0), maxItems(DEFAULT_CAPACITY)

@@ -17,9 +17,17 @@ private:
 	// the target.
 	int getIndexOf(const ItemType& target) const;   
 
+	bool binarySearchRecursiveHelper(const ItemType& target, int low, int high);
+
 public:
 	ArrayBag();
 	void doSomething(); // *** Add new method to the ADT header file
+
+	void bubbleSort(); // bubbleSort - a method to sort the array in ascending order using the bubble sort
+	bool binarySearchIterative(const ItemType& target); // a repetitive version of the binary search
+	bool binarySearchRecursive(const ItemType& target); // a recursive version of the binary search (You should use a helper method that calls the recursive method so the client code does not have to provide the extra parameters. Client calls to both of the search methods should be identical other than the method name.)
+	 
+
 	int getCurrentSize() const;
 	bool isEmpty() const;
 	bool add(const ItemType& newEntry);
