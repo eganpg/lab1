@@ -15,17 +15,17 @@ int main()
 	// Array bag to hold integers
 	ArrayBag<int> bag;
 	// Array to hold initial values to put into the bag
-	// int initialValues[] = {1, 33, 6, 9, 2, 65, 4, 29, 5, 8, 39, 88, 7, 25, 51, 3, 99, 14, 11, 10};
+	int initialValues[] = {1, 33, 6, 9, 2, 65, 4, 29, 5, 8, 39, 88, 7, 25, 51, 3, 99, 14, 11, 10};
 	
 	// // Add the initial values to the bag - user notification
 	// // cout << "Adding positive integers to the bag: " << endl;
-	// for (int i = 0; i < 20; i++)
-	// {
-	// 	// show each item being added to the user
-	// 	// cout << "The value being added to the bag is: " << initialValues[i] << endl;
-	// 	// add the number to the bag
-	// 	bag.add(initialValues[i]);
-	// }  // end for
+	for (int i = 0; i < 20; i++)
+	{
+		// show each item being added to the user
+		// cout << "The value being added to the bag is: " << initialValues[i] << endl;
+		// add the number to the bag
+		bag.add(initialValues[i]);
+	}  // end for
 
 	int choice, value;
 
@@ -53,7 +53,16 @@ int main()
             case 2: { // Add value
                 std::cout << "Enter a value to add: ";
                 std::cin >> value;
-                bag.add(value);
+                // Add code to check for duplicates
+                if (bag.contains(value))
+                {
+                    std::cout << "This value already exists. Please choose another value.\n";
+                } else {
+                    bag.add(value);
+                }
+                //If no duplicates - add value
+                
+                //Else - do nothing
                 break;
             }
             case 3: { // Remove value
