@@ -52,27 +52,53 @@ int main()
             }
             case 2: { // Add value
                 std::cout << "Enter a value to add: ";
-                std::cin >> value;
-                // Add code to check for duplicates
-                if (bag.contains(value))
-                {
-                    std::cout << "This value already exists. Please choose another value.\n";
+                if (std::cin >> value) {
+                    // Input was successfully converted to an int
+                    if (bag.contains(value))
+                    {
+                        std::cout << "This value already exists. Please choose another value.\n";
+                    } else {
+                        bag.add(value);
+                        std::cout << "You added the integer: " << value << std::endl;
+                    } 
                 } else {
-                    bag.add(value);
+                    // Input could not be converted to an int
+                    std::cout << "That's not an integer!" << std::endl;
+
+                    // Clear the error state of cin
+                    std::cin.clear();
+
+                    // Ignore the rest of the input line to start fresh with the next input
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 }
-                //If no duplicates - add value
+                // std::cin >> value;
+                // std::cout << "The value is: " << value << "\n";
+                // Add code to check for duplicates
                 
-                //Else - do nothing
+                // add an else if statement that determines that the value is an int
                 break;
             }
             case 3: { // Remove value
                 std::cout << "Enter a value to remove: ";
-                std::cin >> value;
-                if (bag.remove(value)) {
-                    std::cout << "Value removed.\n";
+                // std::cin >> value;
+                if (std::cin >> value) {
+                    // Input was confirmed as an int
+                    if (bag.remove(value)) {
+                        std::cout << "Value removed.\n";
+                    } else {
+                        std::cout << "Value not found.\n";
+                    }
                 } else {
-                    std::cout << "Value not found.\n";
+                    // Input could not be converted to an int
+                    std::cout << "That's not an integer!" << std::endl;
+
+                    // Clear the error state of cin
+                    std::cin.clear();
+
+                    // Ignore the rest of the input line to start fresh with the next input
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 }
+                    
                 break;
             }
             case 4: { // Sort bag
@@ -86,9 +112,26 @@ int main()
                 std::cout << "Choose search method (1-Iterative, 2-Recursive): ";
                 int method;
                 std::cin >> method;
+
+                //determine if the array has been sorted
+                // bool sorted = isSortedAscending(); 
+                auto vec = bag.toVector();
+                for (int i = 0; i < 20 - 1; ++i) {
+                    if (vec[i] > vec[i + 1]) {
+
+                        std::cout << "This array must be sorted prior to searching, please select option 4 and retry. \n";
+                        break; // Found an element that is greater than the next one
+                        
+                    }
+                }
+                // return true; // No elements are out of order; the array is sorted in ascending order
                 bool found = false;
                 if (method == 1) {
+                    
                     found = bag.binarySearchIterative(value);
+                    
+                    // bag.bubbleSort(); // Ensure the bag is sorted
+                    
                 } else if (method == 2) {
                     bag.bubbleSort(); // Ensure the bag is sorted for recursive search
                     found = bag.binarySearchRecursive(value);
@@ -130,6 +173,12 @@ int main()
    return 0;
    
 }  // end main
+
+// template <typename T, size_t N>
+// bool isSortedAscending(const T(&array)[N]) {
+    
+// }
+
 
 void bubbleSort(ArrayBag<int>& bag)
 {
