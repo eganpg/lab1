@@ -178,15 +178,18 @@ int main()
 
     return 0;
 	
-	// Call a funciton that exercises
-	// some of the bag methods
-	// bagTester(bag);
+	
 	
 	// Invoking the new method
 	// added as an example
 
 	
 	// cout << "before do something with the bag" << endl;
+
+    // Call a funciton that exercises
+	// some of the bag methods
+	// bagTester(bag);
+    
 	// bag.doSomething();
 
 	// bubbleSort(bag); 
@@ -197,48 +200,52 @@ int main()
 
    return 0;
    
-}  // end main
+}  // end main 
 
-// template <typename T, size_t N>
-// bool isSortedAscending(const T(&array)[N]) {
-    
+
+
+
+// DISREGARD CODE BELOW THIS POINT 
+// THE FOLLOWING IS TEST CODE WRITTEN PRE MENU TO ENSURE THE UNDERLYING CODE WAS FUNCTIONAL
+// IN THE FUTURE I WOULD ALTER MY PROGRAM DESIGN TO IMPLEMENT THE MENU FIRST TO AVOID DUPLICATE CODE
+// LEAVING CODE COMMENTED OUT FOR PERSONAL REFERENCE
+
+
+
+// void bubbleSort(ArrayBag<int>& bag)
+// {
+// 	int size = bag.getCurrentSize();
+// 	cout << size << endl;
+
+// 	cout << "Go to bubble sort method in arraybag.cpp" << endl;
+// 	bag.bubbleSort();
+	
+// 	int sizeAfter = bag.getCurrentSize();
+// 	cout << sizeAfter << endl;
+
+//     cout << "Here is the sorted version:" << endl;
+//     for(int i = 0; i < size; i++) {
+//         // Assuming bag[i] or a similar method is available to access elements
+//         // cout << bag[i] << " ";
+//     }
+//     cout << endl;
+// 	// cout << "here is the sorted version" << endl;
+// }
+
+// void binarySearchIterative(ArrayBag<int>& bag)
+// {
+// 	 if (bag.binarySearchIterative(4)) {
+//         cout << "4 found (iterative)." << endl;
+//     }
 // }
 
 
-void bubbleSort(ArrayBag<int>& bag)
-{
-	int size = bag.getCurrentSize();
-	cout << size << endl;
-
-	cout << "Go to bubble sort method in arraybag.cpp" << endl;
-	bag.bubbleSort();
-	
-	int sizeAfter = bag.getCurrentSize();
-	cout << sizeAfter << endl;
-
-    cout << "Here is the sorted version:" << endl;
-    for(int i = 0; i < size; i++) {
-        // Assuming bag[i] or a similar method is available to access elements
-        // cout << bag[i] << " ";
-    }
-    cout << endl;
-	// cout << "here is the sorted version" << endl;
-}
-
-void binarySearchIterative(ArrayBag<int>& bag)
-{
-	 if (bag.binarySearchIterative(4)) {
-        cout << "4 found (iterative)." << endl;
-    }
-}
-
-
-void binarySearchRecursive(ArrayBag<int>& bag)
-{
-	 if (bag.binarySearchRecursive(5)) {
-        cout << "4 found (recursive)." << endl;
-    }
-}
+// void binarySearchRecursive(ArrayBag<int>& bag)
+// {
+// 	 if (bag.binarySearchRecursive(5)) {
+//         cout << "4 found (recursive)." << endl;
+//     }
+// }
 
 
 // This is stock code provided in the file
