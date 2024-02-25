@@ -19,7 +19,9 @@ int main()
 	
 	// // Add the initial values to the bag - user notification
 	// // cout << "Adding positive integers to the bag: " << endl;
-	for (int i = 0; i < 20; i++)
+	
+    // Loop to add each item to the bag
+    for (int i = 0; i < 20; i++)
 	{
 		// show each item being added to the user
 		// cout << "The value being added to the bag is: " << initialValues[i] << endl;
@@ -27,8 +29,10 @@ int main()
 		bag.add(initialValues[i]);
 	}  // end for
 
+    // Define menu choice and the associated input value
 	int choice, value;
 
+    // Present the menu and take an input
     do {
         std::cout << "\nMenu:\n";
         std::cout << "1. Display the contents of the bag\n";
@@ -40,7 +44,10 @@ int main()
         std::cout << "Enter your choice: ";
         std::cin >> choice;
 
+
+        // Process the input via switch
         switch (choice) {
+            // Show the bag contents as a vector
             case 1: { // Display contents
                 auto vec = bag.toVector();
                 std::cout << "Bag contents: ";
@@ -50,6 +57,7 @@ int main()
                 std::cout << "\n";
                 break;
             }
+            // Allow the user to add a value; check each input to ensure it is not a duplicate
             case 2: { // Add value
                 std::cout << "Enter a value to add: ";
                 if (std::cin >> value) {
@@ -62,7 +70,7 @@ int main()
                         std::cout << "You added the integer: " << value << std::endl;
                     } 
                 } else {
-                    // Input could not be converted to an int
+                    // if the input is not an int
                     std::cout << "That's not an integer!" << std::endl;
 
                     // Clear the error state of cin
@@ -73,14 +81,14 @@ int main()
                 }
                 // std::cin >> value;
                 // std::cout << "The value is: " << value << "\n";
-                // Add code to check for duplicates
-                
-                // add an else if statement that determines that the value is an int
+               
                 break;
             }
+
+            // User can enter a value to remove
             case 3: { // Remove value
                 std::cout << "Enter a value to remove: ";
-                // std::cin >> value;
+                // confirm value is an int
                 if (std::cin >> value) {
                     // Input was confirmed as an int
                     if (bag.remove(value)) {
@@ -89,7 +97,7 @@ int main()
                         std::cout << "Value not found.\n";
                     }
                 } else {
-                    // Input could not be converted to an int
+                    // Message if input is not an int; do nothing 
                     std::cout << "That's not an integer!" << std::endl;
 
                     // Clear the error state of cin
@@ -101,51 +109,68 @@ int main()
                     
                 break;
             }
+
+            // call bubble sort and present confirmation message upon sorting
             case 4: { // Sort bag
                 bag.bubbleSort();
                 std::cout << "Bag sorted.\n";
                 break;
             }
+
+            // User can search by iterative or recursive depending on selection
             case 5: { // Search for a value
                 std::cout << "Enter a value to search for: ";
                 std::cin >> value;
                 std::cout << "Choose search method (1-Iterative, 2-Recursive): ";
                 int method;
+                bool needSort;
                 std::cin >> method;
 
                 //determine if the array has been sorted
-                // bool sorted = isSortedAscending(); 
+                
+                needSort = false;
+
+                // Convert the bag to a vector
                 auto vec = bag.toVector();
+                // Check if it is in order
                 for (int i = 0; i < 20 - 1; ++i) {
                     if (vec[i] > vec[i + 1]) {
-
+                        // if program finds any int not in ascending order, prompt user to sort then retry
                         std::cout << "This array must be sorted prior to searching, please select option 4 and retry. \n";
+                        needSort = true;
                         break; // Found an element that is greater than the next one
                         
                     }
                 }
                 // return true; // No elements are out of order; the array is sorted in ascending order
                 bool found = false;
-                if (method == 1) {
+
+                // if the user chooses iterative and the vector does not need to be sorted
+                if (method == 1 && needSort == false) {
                     
+                    // call iterative search and sent the variable found to the result
                     found = bag.binarySearchIterative(value);
                     
-                    // bag.bubbleSort(); // Ensure the bag is sorted
+                } else if (method == 2 && needSort == false) { // if the user chooses 2 and vector does not need to be sorted
                     
-                } else if (method == 2) {
-                    bag.bubbleSort(); // Ensure the bag is sorted for recursive search
+                    // call recursive search and set found to the result
                     found = bag.binarySearchRecursive(value);
                 }
+                // if the value was found notify the user
                 if (found) {
-                    std::cout << "Value found.\n";
-                } else {
-                    std::cout << "Value not found.\n";
+                    std::cout << "Value has been found.\n";
+                } else { // otherwise tell the user the value cannot be found
+                    std::cout << "Value cannot be found.\n";
                 }
                 break;
             }
+
+            // allow user to exit
             case 6: // Exit
                 std::cout << "Exiting...\n";
                 break;
+
+            // User cannot select other value notify them
             default:
                 std::cout << "Invalid choice. Please enter a valid number.\n";
         }
@@ -207,6 +232,7 @@ void binarySearchIterative(ArrayBag<int>& bag)
     }
 }
 
+
 void binarySearchRecursive(ArrayBag<int>& bag)
 {
 	 if (bag.binarySearchRecursive(5)) {
@@ -214,6 +240,8 @@ void binarySearchRecursive(ArrayBag<int>& bag)
     }
 }
 
+
+// This is stock code provided in the file
 void bagTester(ArrayBag<int>& bag)
 {
 	// Show that the bag is not current empty - returns bool from isEmpty
