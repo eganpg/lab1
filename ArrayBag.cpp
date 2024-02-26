@@ -33,6 +33,8 @@ void ArrayBag<ItemType>::bubbleSort()
    
    
 }  
+
+// Iterative Search
 template<class ItemType>
 bool ArrayBag<ItemType>::binarySearchIterative(const ItemType& target)
 {
@@ -59,6 +61,7 @@ bool ArrayBag<ItemType>::binarySearchIterative(const ItemType& target)
    return false;
 }
 
+//Recursive Search Main
 template<class ItemType>
 bool ArrayBag<ItemType>::binarySearchRecursive(const ItemType& target) 
 {
@@ -67,7 +70,7 @@ bool ArrayBag<ItemType>::binarySearchRecursive(const ItemType& target)
    return binarySearchRecursiveHelper(target, 0, itemCount - 1);
 }
 
-
+// Recursive Search Helper
 template<class ItemType>
 bool ArrayBag<ItemType>::binarySearchRecursiveHelper(const ItemType& target, int low, int high) {
    // Base case: If the 'low' index is greater than the 'high' index, the target is not found within the range
