@@ -6,70 +6,89 @@
 
 // *** Add new method code to the ADT implementation file
 
-// Model method to base other lab implementations
-// template<class ItemType>
-// void ArrayBag<ItemType>::doSomething()
-// {
-// 	std::cout << "This is the demo - code to come to follow lab instructions. Leave this for demo purposes - remove before submission\n";
-//    std::cout << "doing something again here\n";
-// }  // end doSomething
-
-// Model method to base other lab implementations
+// Bubble sort based on example model method
 template<class ItemType>
 void ArrayBag<ItemType>::bubbleSort()
 {
-	std::cout << "Bubble Sort\n";
+   // For debugging purposes send notification to console that bubble sort has been successfully called
+	// std::cout << "Bubble Sort\n";
+   // set true
    bool swapped = true;
-        while (swapped) {
-            swapped = false;
-            for (int i = 0; i < itemCount - 1; i++) {
-                if (items[i] > items[i + 1]) {
-                    std::swap(items[i], items[i + 1]);
-                    swapped = true;
-                }
+      // for as long as swapped is true
+      while (swapped) {
+         // temporarily set to false
+         swapped = false;
+         // iterate over the array - itemCount - 1 accounts for array beginning with 0 not 1
+         for (int i = 0; i < itemCount - 1; i++) {
+            // if the program looks at an item in the array then looks at the next and finds it to be smaller...
+            if (items[i] > items[i + 1]) {
+               // swap the two number
+               std::swap(items[i], items[i + 1]);
+               // continue the while loop until the array is ordered in ascending order
+               // when the numbers are in ascending order swapped will remain false and the loop will end
+               swapped = true;
             }
-        }
+         }
+      }
    
    
-}  // end doSomething
+}  
 template<class ItemType>
 bool ArrayBag<ItemType>::binarySearchIterative(const ItemType& target)
 {
-   std::cout << "Binary Search Iterative " << target << "\n";
+   // debugging step: let the user know binary search has been called and present the search target
+   // std::cout << "Binary Search Iterative " << target << "\n";
+   // initialize low as 0
    int low = 0;
-        int high = itemCount - 1;
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-            if (items[mid] == target) {
-               std::cout << "Found it!!! \n";
-                return true;
-            } else if (items[mid] < target) {
-                low = mid + 1;
-            } else {
-                high = mid - 1;
-            }
-        }
-        return false;
+   // initialize high to the last index of the array
+   int high = itemCount - 1;
+   // continue to the loop as long as low is less or equal to high
+   while (low <= high) {
+      // calculate middle index
+      int mid = low + (high - low) / 2;
+      // if middle index is equal to the target it was found
+      if (items[mid] == target) {
+         std::cout << "Found it!!! \n";
+            return true;
+      } else if (items[mid] < target) { // if the item at middle index is less
+            low = mid + 1; // adjust the low to search the upper half of the range
+      } else { // if the item at the middle is greater than the target
+            high = mid - 1; // adjust the high to search the lower half of the range
+      }
+   }
+   return false;
 }
+
 template<class ItemType>
 bool ArrayBag<ItemType>::binarySearchRecursive(const ItemType& target) 
 {
+   // Calls a helper function to perform the binary search recursively
+   // Passes the target item to find, the starting index (0), and the ending index (itemCount - 1) as parameters.
    return binarySearchRecursiveHelper(target, 0, itemCount - 1);
 }
 
+
 template<class ItemType>
 bool ArrayBag<ItemType>::binarySearchRecursiveHelper(const ItemType& target, int low, int high) {
-        if (low > high) return false; // Base case
+   // Base case: If the 'low' index is greater than the 'high' index, the target is not found within the range.
+   if (low > high) return false;
 
-        int mid = low + (high - low) / 2;
-        if (items[mid] == target) {
-            return true;
-        } else if (items[mid] < target) {
-            return binarySearchRecursiveHelper(target, mid + 1, high);
-        } else {
-            return binarySearchRecursiveHelper(target, low, mid - 1);
-        }
-    }
+   // Calculate the middle index of the current search range to potentially divide the search area in half.
+   int mid = low + (high - low) / 2;
+   
+   // If the item at the middle index matches the target, return true to indicate the target has been found.
+   if (items[mid] == target) {
+      return true;
+   } else if (items[mid] < target) { // If the item at the middle index is less than the target
+      
+      // Recursively search the upper half of the current range by setting 'low' to 'mid + 1'.
+      return binarySearchRecursiveHelper(target, mid + 1, high);
+   } else { // If the item at the middle index is greater than the target
+      
+      // Recursively search the lower half of the current range by setting 'high' to 'mid - 1'
+      return binarySearchRecursiveHelper(target, low, mid - 1);
+   }
+}
 
 template<class ItemType>
 ArrayBag<ItemType>::ArrayBag(): itemCount(0), maxItems(DEFAULT_CAPACITY)
