@@ -20,11 +20,9 @@
 
 using namespace std;
 
-
+// Define Stock: do not adjust
 void bagTester(ArrayBag<int>& bag);
-void bubbleSort(ArrayBag<int>& bag);
-void binarySearchIterative(ArrayBag<int>& bag);
-void binarySearchRecursive(ArrayBag<int>& bag);
+
 
 int main()
 {
@@ -193,27 +191,6 @@ int main()
     } while (choice != 6);
 
     return 0;
-	
-	
-	
-	// Invoking the new method
-	// added as an example
-
-	
-	// cout << "before do something with the bag" << endl;
-
-    // Call a funciton that exercises
-	// some of the bag methods
-	// bagTester(bag);
-
-
-	// bubbleSort(bag); 
-
-	// binarySearchIterative(bag);
-
-	// binarySearchRecursive(bag);
-
-   return 0;
    
 }  // end main 
 
