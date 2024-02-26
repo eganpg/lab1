@@ -7,12 +7,12 @@
 // *** Add new method code to the ADT implementation file
 
 // Model method to base other lab implementations
-template<class ItemType>
-void ArrayBag<ItemType>::doSomething()
-{
-	std::cout << "This is the demo - code to come to follow lab instructions. Leave this for demo purposes - remove before submission\n";
-   std::cout << "doing something again here\n";
-}  // end doSomething
+// template<class ItemType>
+// void ArrayBag<ItemType>::doSomething()
+// {
+// 	std::cout << "This is the demo - code to come to follow lab instructions. Leave this for demo purposes - remove before submission\n";
+//    std::cout << "doing something again here\n";
+// }  // end doSomething
 
 // Model method to base other lab implementations
 template<class ItemType>

@@ -48,7 +48,7 @@ int main()
         // Process the input via switch
         switch (choice) {
             // Show the bag contents as a vector
-            case 1: { // Display contents
+            case 1: { 
                 auto vec = bag.toVector();
                 std::cout << "Bag contents: ";
                 for (int item : vec) {
@@ -58,7 +58,7 @@ int main()
                 break;
             }
             // Allow the user to add a value; check each input to ensure it is not a duplicate
-            case 2: { // Add value
+            case 2: {
                 std::cout << "Enter a value to add: ";
                 if (std::cin >> value) {
                     // Input was successfully converted to an int
@@ -86,7 +86,7 @@ int main()
             }
 
             // User can enter a value to remove
-            case 3: { // Remove value
+            case 3: { 
                 std::cout << "Enter a value to remove: ";
                 // confirm value is an int
                 if (std::cin >> value) {
@@ -111,14 +111,14 @@ int main()
             }
 
             // call bubble sort and present confirmation message upon sorting
-            case 4: { // Sort bag
+            case 4: { 
                 bag.bubbleSort();
                 std::cout << "Bag sorted.\n";
                 break;
             }
 
             // User can search by iterative or recursive depending on selection
-            case 5: { // Search for a value
+            case 5: { 
                 std::cout << "Enter a value to search for: ";
                 std::cin >> value;
                 std::cout << "Choose search method (1-Iterative, 2-Recursive): ";
@@ -189,8 +189,7 @@ int main()
     // Call a funciton that exercises
 	// some of the bag methods
 	// bagTester(bag);
-    
-	// bag.doSomething();
+
 
 	// bubbleSort(bag); 
 
@@ -202,50 +201,6 @@ int main()
    
 }  // end main 
 
-
-
-
-// DISREGARD CODE BELOW THIS POINT 
-// THE FOLLOWING IS TEST CODE WRITTEN PRE MENU TO ENSURE THE UNDERLYING CODE WAS FUNCTIONAL
-// IN THE FUTURE I WOULD ALTER MY PROGRAM DESIGN TO IMPLEMENT THE MENU FIRST TO AVOID DUPLICATE CODE
-// LEAVING CODE COMMENTED OUT FOR PERSONAL REFERENCE
-
-
-
-// void bubbleSort(ArrayBag<int>& bag)
-// {
-// 	int size = bag.getCurrentSize();
-// 	cout << size << endl;
-
-// 	cout << "Go to bubble sort method in arraybag.cpp" << endl;
-// 	bag.bubbleSort();
-	
-// 	int sizeAfter = bag.getCurrentSize();
-// 	cout << sizeAfter << endl;
-
-//     cout << "Here is the sorted version:" << endl;
-//     for(int i = 0; i < size; i++) {
-//         // Assuming bag[i] or a similar method is available to access elements
-//         // cout << bag[i] << " ";
-//     }
-//     cout << endl;
-// 	// cout << "here is the sorted version" << endl;
-// }
-
-// void binarySearchIterative(ArrayBag<int>& bag)
-// {
-// 	 if (bag.binarySearchIterative(4)) {
-//         cout << "4 found (iterative)." << endl;
-//     }
-// }
-
-
-// void binarySearchRecursive(ArrayBag<int>& bag)
-// {
-// 	 if (bag.binarySearchRecursive(5)) {
-//         cout << "4 found (recursive)." << endl;
-//     }
-// }
 
 
 // This is stock code provided in the file
