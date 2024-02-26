@@ -63,25 +63,25 @@ template<class ItemType>
 bool ArrayBag<ItemType>::binarySearchRecursive(const ItemType& target) 
 {
    // Calls a helper function to perform the binary search recursively
-   // Passes the target item to find, the starting index (0), and the ending index (itemCount - 1) as parameters.
+   // Passes the target item to find, the starting index (0), and the ending index (itemCount - 1) as parameters
    return binarySearchRecursiveHelper(target, 0, itemCount - 1);
 }
 
 
 template<class ItemType>
 bool ArrayBag<ItemType>::binarySearchRecursiveHelper(const ItemType& target, int low, int high) {
-   // Base case: If the 'low' index is greater than the 'high' index, the target is not found within the range.
+   // Base case: If the 'low' index is greater than the 'high' index, the target is not found within the range
    if (low > high) return false;
 
-   // Calculate the middle index of the current search range to potentially divide the search area in half.
+   // Calculate the middle index of the current search range to potentially divide the search area in half
    int mid = low + (high - low) / 2;
    
-   // If the item at the middle index matches the target, return true to indicate the target has been found.
+   // If the item at the middle index matches the target, return true to indicate the target has been found
    if (items[mid] == target) {
       return true;
    } else if (items[mid] < target) { // If the item at the middle index is less than the target
       
-      // Recursively search the upper half of the current range by setting 'low' to 'mid + 1'.
+      // Recursively search the upper half of the current range by setting 'low' to 'mid + 1'
       return binarySearchRecursiveHelper(target, mid + 1, high);
    } else { // If the item at the middle index is greater than the target
       
