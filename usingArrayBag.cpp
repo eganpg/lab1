@@ -1,3 +1,17 @@
+// PROGRAM DESCRIPTION
+
+// The following code presents a 1 - 6 selection to the user
+// The user is able to
+// 1. View the contents of the bag. Upon selecting, user can view the array in its current state. Utilize stock vector conversion for display purposes.
+// 2. Add a value to the bag. User is notified if the value already exists in the bag. Upon entering unique value, value is added to the bag.
+// 3. Remove a value from the bag, user is notified if value does not exist. If value does exist, value is removed.
+// 4. Sort the Bag - This orders the array in ascending order - User is also directed to use this option when searching an un ordered array
+// 5. Search for a Value - User is presented with a sub menu, Iterative or Recursive. User is also directed to enter a target value to search for
+// 6. User Exist the Program
+
+// User should be notified if a value other than the above menu items is entered.
+
+
 #include <iostream>
 #include <string>
 #include "ArrayBag.h"
