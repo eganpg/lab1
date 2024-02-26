@@ -7,10 +7,13 @@ template<class ItemType>
 class ArrayBag : public BagInterface<ItemType>
 {
 private:
+
+	//Stock Code do not remove
 	static const int DEFAULT_CAPACITY = 30; // Small size to test for a full bag
 	ItemType items[DEFAULT_CAPACITY];      // Array of bag items
 	int itemCount;                         // Current count of bag items 
-	int maxItems;                          // Max capacity of the bag
+	int maxItems;   
+	// End of stock code                       // Max capacity of the bag
    
 	// Returns either the index of the element in the array items that
 	// contains the given target or -1, if the array does not contain 
@@ -33,7 +36,7 @@ public:
 	// Client calls to both of the search methods should be identical other than the method name.)
 	bool binarySearchRecursive(const ItemType& target); 
 	 
-
+	// Stock code do not remove
 	int getCurrentSize() const;
 	bool isEmpty() const;
 	bool add(const ItemType& newEntry);
@@ -42,6 +45,7 @@ public:
 	bool contains(const ItemType& anEntry) const;
 	int getFrequencyOf(const ItemType& anEntry) const;
    std::vector<ItemType> toVector() const;
+   // End of stock code
 }; // end ArrayBag
 
 #include "ArrayBag.cpp"
