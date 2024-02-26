@@ -11,6 +11,8 @@
 
 // User should be notified if a value other than the above menu items is entered.
 
+// Instructions to run program: Run program from usingArrayBag.cpp; running from other files will not work. 
+
 
 #include <iostream>
 #include <string>
